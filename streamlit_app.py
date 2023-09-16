@@ -1,5 +1,4 @@
 # streamlit_app.py
-
 import streamlit as st
 from st_files_connection import FilesConnection
 
@@ -10,4 +9,4 @@ df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
 # Print results.
 for row in df.itertuples():
-    st.write(f"{row.Owner} has a :{row.Pet}:")
+    st.write(f"{row.Owner} loves :{row.Pet}:")
