@@ -16,6 +16,8 @@ def main():
         with open(file_name) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+    local_css("homepageStyle.css")
+
     def gif_Loader(url):
         r = requests.get(url)
         if r.status_code != 200:
@@ -23,8 +25,6 @@ def main():
         return r.json()
     
     youtubeGif = gif_Loader("https://lottie.host/a820c77a-f479-4a05-bf1c-1ec13193966d/VguKLow6eC.json")
-
-    local_css("homepageStyle.css")
 
     with st.sidebar:
         selected = option_menu(
