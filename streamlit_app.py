@@ -5,6 +5,9 @@ from st_files_connection import FilesConnection
 import pandas as pd
 import numpy as np
 import yt_comment_req
+from streamlit_echarts import st_echarts
+from streamlit_echarts import JsCode
+import streamlit as st
 
 my_dict = {}
 # Create connection object and retrieve file contents.
@@ -43,7 +46,7 @@ def pageTest():
             valueString = str(value)
         value_ind += 1
 
-    yt_comment_req.render_stacked_line_chart()
+    render_stacked_line_chart()
 
     # Below will have code regarding language processing
     # constructor
@@ -85,3 +88,32 @@ def get_sentiment(comment):
     score = response.document_sentiment.score
 
     return score
+
+def render_stacked_line_chart():
+    options = {
+        "title": {"text": "Sentiment Value of Recent Videos"},
+        "tooltip": {"trigger": "axis"},
+        "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
+        "toolbox": {"feature": {"saveAsImage": {}}},
+        "xAxis": {
+            "type": "category",
+            "boundaryGap": False,
+            "data": my_dict.keys(),
+        },
+        "yAxis": {"type": "value"},
+        "series": [
+            {
+                "name": "name1",
+                "type": "line",
+#                "stack": "stack1",
+                "data": [4,4.3,4],
+            },
+            {
+                "name": "name2",
+                "type": "line",
+#                "stack": "stack2",
+                "data": [5,3,2],
+            },
+        ],
+    }
+    st_echarts(options=options, height="400px")
