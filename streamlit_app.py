@@ -2,6 +2,10 @@
 import streamlit as st
 from st_files_connection import FilesConnection
 
+import pandas as pd
+import numpy as np
+import yt_comment_req
+
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
 def pageTest():
@@ -15,23 +19,21 @@ def pageTest():
 
     st.write(url)
 
-    with open("yt_comment-req.py") as f:
-        exec(f.read())
+    yt_comment_req.get_youtube_comments()
+    yt_comment_req.render_stacked_line_chart()
 
-    #
     # Below will have code regarding language processing
     from google.cloud import language_v1
     # constructor
     client = language_v1.LanguageServiceClient()
 
-    text = u"""I think that League of Legends and Valorant are the greatest 
-    games to be released."""
+    text = u"""Sample text"""
     # document object from language v1 library
     document = language_v1.Document(
-        # pass the text 
-        content=text, type_=language_v1.Document.Type.PLAIN_TEXT
-    )
-
+    # pass the text 
+    # this document constructor has several elements. content, language_code, and type
+    content=text, type_=language_v1.Document.Type.PLAIN_TEXT
+)
     sentiment = client.analyze_sentiment(
         request={"document": document}
     ).document_sentiment
@@ -39,3 +41,4 @@ def pageTest():
     print("Text: {}".format(text))
     print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
     # We can use the client. object methods for more data analysis
+
