@@ -46,7 +46,7 @@ def main():
 
         with st.container():
             st.write("---")
-            left_column, right_column = st.columns(2)
+            left_column, right_column = st.columns(2, gap="large")
             with left_column:
                 st.subheader("Our Mission")
                 st.write("""We want to make it easier for youtubers to get a general understanding
