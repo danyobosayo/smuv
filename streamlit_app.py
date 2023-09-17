@@ -1,6 +1,7 @@
 # streamlit_app.py
 import streamlit as st
 from st_files_connection import FilesConnection
+import yt_comment_req
 
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
@@ -14,8 +15,8 @@ url = st.text_input('Enter Youtube Channel URL')
 
 st.write(url)
 
-with open("yt_comment-req.py") as f:
-    exec(f.read())
+yt_comment_req.get_youtube_comments()
+yt_comment_req.render_stacked_line_chart()
 
 #
 # Below will have code regarding language processing
