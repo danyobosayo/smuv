@@ -33,47 +33,29 @@ def get_youtube_comments():
 
 def render_stacked_line_chart():
     options = {
-        "title": {"text": "折线图堆叠"},
+        "title": {"text": "Sentiment Value of Recent Videos"},
         "tooltip": {"trigger": "axis"},
-        "legend": {"data": ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]},
+   #     "legend": {"data": ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]},
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "toolbox": {"feature": {"saveAsImage": {}}},
         "xAxis": {
             "type": "category",
             "boundaryGap": False,
-            "data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+            "data": ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5", "Week 6", "Week 7"],
         },
         "yAxis": {"type": "value"},
         "series": [
             {
-                "name": "邮件营销",
+                "name": "name1",
                 "type": "line",
-                "stack": "总量",
-                "data": [120, 132, 101, 134, 90, 230, 210],
+                "stack": "stack1",
+                "data": [4,4.3,4],
             },
             {
-                "name": "联盟广告",
+                "name": "name2",
                 "type": "line",
-                "stack": "总量",
-                "data": [220, 182, 191, 234, 290, 330, 310],
-            },
-            {
-                "name": "视频广告",
-                "type": "line",
-                "stack": "总量",
-                "data": [150, 232, 201, 154, 190, 330, 410],
-            },
-            {
-                "name": "直接访问",
-                "type": "line",
-                "stack": "总量",
-                "data": [320, 332, 301, 334, 390, 330, 320],
-            },
-            {
-                "name": "搜索引擎",
-                "type": "line",
-                "stack": "总量",
-                "data": [820, 932, 901, 934, 1290, 1330, 1320],
+                "stack": "stack2",
+                "data": [5,3,2],
             },
         ],
     }
