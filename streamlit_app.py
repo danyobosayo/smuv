@@ -16,10 +16,9 @@ def pageTest():
 
     # Input field for Youtube URL
     url = st.text_input('Enter Youtube Channel URL')
+    if url:
+       yt_comment_req.get_youtube_comments(url)
 
-    st.write(url)
-
-    yt_comment_req.get_youtube_comments()
     yt_comment_req.render_stacked_line_chart()
 
     # Below will have code regarding language processing

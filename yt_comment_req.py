@@ -3,39 +3,31 @@ import pandas as pd
 import json
 from streamlit_echarts import st_echarts
 from streamlit_echarts import JsCode
+import streamlit as st
 
 api_service_name = "youtube"
 api_version = "v3"
 DEVELOPER_KEY = "AIzaSyBUf_aEux--I1a-R0Jlf1747KnHQ66x-JI"
 
-def get_youtube_comments():
+def get_youtube_comments(vidID):
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=DEVELOPER_KEY)
 
     request = youtube.commentThreads().list(
         part="snippet",
-        videoId="WNrB1Q9Rry0",
+        videoId=vidID,
         maxResults=100
     )
     response = request.execute()
 
-    comments = []
-
     for item in response['items']:
-        comment = item['snippet']['topLevelComment']['snippet']
-        comments.append([
-            comment['authorDisplayName'],
-            comment['publishedAt'],
-            comment['updatedAt'],
-            comment['likeCount'],
-            comment['textDisplay']
-        ])
+        st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
 
 def render_stacked_line_chart():
     options = {
         "title": {"text": "Sentiment Value of Recent Videos"},
         "tooltip": {"trigger": "axis"},
-   #     "legend": {"data": ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]},
+ #       "legend": {"data": ["邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎"]},
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "toolbox": {"feature": {"saveAsImage": {}}},
         "xAxis": {
@@ -48,13 +40,13 @@ def render_stacked_line_chart():
             {
                 "name": "name1",
                 "type": "line",
-                "stack": "stack1",
+#                "stack": "stack1",
                 "data": [4,4.3,4],
             },
             {
                 "name": "name2",
                 "type": "line",
-                "stack": "stack2",
+#                "stack": "stack2",
                 "data": [5,3,2],
             },
         ],
