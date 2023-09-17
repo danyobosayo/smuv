@@ -29,6 +29,17 @@ def pageTest():
         st.write(vidID)
         my_dict = yt_comment_req.get_youtube_comments(vidID)
 
+    value_ind = 0
+    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
+        st.write(key)
+        for value in my_dict.get(key):
+            valueString = str(value)
+            st.write("value is from my dict")
+            st.write(valueString)
+            st.write("length of values is")
+            st.write(len(value))
+        value_ind += 1
+
     yt_comment_req.render_stacked_line_chart()
 
     # Below will have code regarding language processing

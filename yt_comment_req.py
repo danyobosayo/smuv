@@ -60,7 +60,6 @@ def get_youtube_comments(vidID):
     #Code to print comments retrived
     for item in response['items']:
         values.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
-#        commentText = item['snippet']['topLevelComment']['snippet']['textDisplay']
         commentDateString = item['snippet']['topLevelComment']['snippet']['publishedAt'].replace("-","")
         keys.append(commentDateString[:8])
 
@@ -68,7 +67,8 @@ def get_youtube_comments(vidID):
     values_index = 0
     for key in keys: 
         if key not in my_dict.keys():
-            my_dict[key] = [values[values_index]]
+            my_dict[key] = []
+            my_dict[key].append(values[values_index])
         else:
             my_dict[key].append(values[values_index])
         # increase index counter
