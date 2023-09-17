@@ -23,6 +23,11 @@ def pageTest():
        uploads_id = yt_comment_req.get_uploads_from_channel_code(channel_code)
        st.write(uploads_id)
 
+       videoIds = yt_comment_req.get_video_id_from_uploads(uploads_id)
+
+       for vidID in videoIds:
+           st.write(vidID)
+
        #vidID = 
        #yt_comment_req.get_youtube_comments(vidID)
 

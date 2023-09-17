@@ -21,6 +21,24 @@ def get_uploads_from_channel_code(channel_code):
     for item in response['items']:
         return item['contentDetails']['relatedPlaylists']['uploads']
 
+def get_video_id_from_uploads(uploads_id):
+    youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+
+    request = youtube.playlistItems().list(
+        part="contentDetails",
+        playlistId=uploads_id,
+        maxResults=10
+    )
+    response = request.execute()
+
+    videoIds = []
+
+    for item in response['items']:
+        videoIds.append(item['contentDetails']['videoId'])
+    
+    return videoIds
+
 def get_youtube_comments(vidID):
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=DEVELOPER_KEY)
