@@ -12,6 +12,18 @@ from streamlit_lottie import st_lottie
 def main():
     st.set_page_config(page_title="My Webpage", layout="wide")
 
+    page_bg_img = """
+    <style>
+    [data-testid="stAppViewContainer"]{
+    background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+    background-size: cover;
+    background-position: bottom 300px;
+    }
+    </style>
+    """
+
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
     def local_css(file_name):
         with open(file_name) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
