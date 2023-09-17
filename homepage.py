@@ -11,8 +11,8 @@ from streamlit_lottie import st_lottie
 
 def main():
 
-    # Whole page is used
-    st.set_page_config(page_title="My Webpage", layout="wide")
+    # Whole page is used, and set nav menu to collapsed by default
+    st.set_page_config(page_title="My Webpage", layout="wide", initial_sidebar_state="collapsed")
 
     # CSS implementation
     def local_css(file_name):
@@ -46,7 +46,7 @@ def main():
 
         with st.container():
             st.write("---")
-            left_column, right_column = st.columns(2)
+            left_column, right_column = st.columns(2, gap="large")
             with left_column:
                 st.subheader("Our Mission")
                 st.write("""We want to make it easier for youtubers to get a general understanding
@@ -68,8 +68,8 @@ def main():
 
     if selected == "Contacts":
         with st.container():
-            st.write("---")
             st.header("Get in touch with us!")
+            st.write("---")
             st.write("##")
             contact_form = """
             <form action="https://formsubmit.co/siryeetthrowaway@gmail.com" method="POST">

@@ -13,6 +13,13 @@ def pageTest():
     conn = st.experimental_connection('gcs', type=FilesConnection)
     df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
+    def local_css(file_name):
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+    local_css("streamlit_app.css")
+
+
     st.title("Youtube Channel Comment Trends")
 
     st.title("")
@@ -28,6 +35,17 @@ def pageTest():
         vidID = videoIds[0]
         st.write(vidID)
         my_dict = yt_comment_req.get_youtube_comments(vidID)
+
+    value_ind = 0
+    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
+        st.write(key)
+        for value in my_dict.get(key):
+            valueString = str(value)
+            st.write("value is from my dict")
+            st.write(valueString)
+            st.write("length of values is")
+            st.write(len(value))
+        value_ind += 1
 
     yt_comment_req.render_stacked_line_chart()
 
