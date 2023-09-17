@@ -10,6 +10,7 @@ from streamlit_lottie import st_lottie
 #   - pip install requests
 
 def main():
+    
     st.set_page_config(page_title="My Webpage", layout="wide")
 
     def local_css(file_name):

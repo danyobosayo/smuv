@@ -34,7 +34,12 @@ footer {visibility: hidden;}
 header {visibility: hidden;}
 
 [data-testid="stAppViewContainer"]{
-  background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+  background-color: hsl(0, 39%, 15%);
+  background-image: 
+  linear-gradient(
+    -45deg, 
+    transparent 50%,
+    hsl(0, 39%, 70%) 50%);
 }
 
 [data-testid="stSidebar"]{
