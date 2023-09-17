@@ -116,4 +116,5 @@ def render_stacked_line_chart():
             },
         ],
     }
+    options = list(my_dict.keys())
     st_echarts(options=options, height="400px")

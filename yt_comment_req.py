@@ -18,6 +18,9 @@ def get_uploads_from_channel_code(channel_code):
         id=channel_code
     )
     response = request.execute()
+    # issues here
+    #st.write ("reponse item writing")
+    #st.write(response['items'])
     for item in response['items']:
         return item['contentDetails']['relatedPlaylists']['uploads']
 
