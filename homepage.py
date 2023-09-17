@@ -24,7 +24,7 @@ def main():
             return None
         return r.json()
     
-    youtubeGif = gif_Loader("https://lottie.host/a820c77a-f479-4a05-bf1c-1ec13193966d/VguKLow6eC.json")
+    #youtubeGif = gif_Loader("https://lottie.host/a820c77a-f479-4a05-bf1c-1ec13193966d/VguKLow6eC.json")
 
     with st.sidebar:
         selected = option_menu(
@@ -35,10 +35,8 @@ def main():
 
     if selected == "Home":
         with st.container():
-            st_lottie(youtubeGif, height=100, key="coding")
+#           st_lottie(youtubeGif, height=100, key="coding")
             st.title("Youtube Analytics")
-            st.write("Here's a topato")
-            st.write("[Learn More >](https://themodernproper.com/30-best-potato-recipes)")
 
         with st.container():
             st.write("---")

@@ -33,13 +33,11 @@ button[type=submit]:hover {
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-
 [data-testid="stAppViewContainer"]{
-    background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
-    background-size: cover;
-    background-position: bottom 100px;
+  background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
 }
 
 [data-testid="stSidebar"]{
-    background-image: url(image.jpg);
+  background: linear-gradient(#ffffff 0%, #efefef 80%);
+  box-shadow: 5px 5px 5px 5px black;
 }
