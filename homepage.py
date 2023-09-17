@@ -7,6 +7,7 @@ from streamlit_lottie import st_lottie
 #Make sure to: 
 #   - pip install streamlit-option-menu
 #   - pip install streamlit_lottie
+#   - pip install requests
 
 def main():
     st.set_page_config(page_title="My Webpage", layout="wide")
@@ -27,7 +28,6 @@ def main():
 
     with st.sidebar:
         selected = option_menu(
-            menu_title="Main Menu",
             options=["Home", "Analytics", "Contacts"],
             icons=["house", "clipboard2-data-fill", "envelope-at"]
         )
@@ -43,12 +43,13 @@ def main():
             st.write("---")
             left_column, right_column = st.columns(2)
             with left_column:
-                st.subheader("This is the left column")
+                st.subheader("Our Mission")
                 st.write("""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                         dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
                         proident, sunt in culpa qui officia deserunt mollit anim id est laborum.""")
             with right_column:
+                st.subheader("\n\n\n")
                 st.write("""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
                         dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
