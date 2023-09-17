@@ -42,5 +42,3 @@ def pageTest():
     print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
     # We can use the client. object methods for more data analysis
 
-    # print data to website
-    st.header("Sentiment Value of Recent Videos")
