@@ -60,7 +60,8 @@ def pageTest():
             sentiments.append(sentiment)
         value_index += 1
 
-    for sentiment in sentiments:
+   # for sentiment in sentiments:
+
         #here in this loop we will append values to the graph
 
         
@@ -68,29 +69,19 @@ def pageTest():
 
     # We can use the client. object methods for more data analysis
 
-# ========================   BELOW IS ALL TEST CODE   ========================
-# I will try to create some modularity.
 def get_sentiment(comment):
-
     from google.cloud import language_v1
     # Create a language client
     client = language_v1.LanguageServiceClient()
     
-
     # Create a document object
     document = language_v1.Document(content=comment, type_=language_v1.Document.Type.PLAIN_TEXT)
     #document.type = language.Document.Type.PLAIN_TEXT
     
-
     # Analyze the document
     response = client.analyze_sentiment(request={'document': document})
     
-
     # Get the sentiment score
     score = response.document_sentiment.score
-
-    #comment these out later
-    #st.write("score is ")
-    #st.write(score)
 
     return score
