@@ -48,7 +48,8 @@ def get_youtube_comments(vidID):
         videoId=vidID,
         maxResults=100,
         #Added parameters
-        order="relevance"
+        order="relevance",
+        textFormat="plainText"
     )
     response = request.execute()
 

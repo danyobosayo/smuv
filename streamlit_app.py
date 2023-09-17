@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import yt_comment_req
 
+my_dict = {}
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
 def pageTest():
@@ -16,7 +17,6 @@ def pageTest():
 
     st.title("")
 
-    my_dict = {}
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
     if channel_code:
@@ -32,49 +32,52 @@ def pageTest():
     yt_comment_req.render_stacked_line_chart()
 
     # Below will have code regarding language processing
-    from google.cloud import language_v1
     # constructor
-    client = language_v1.LanguageServiceClient()
-
-    text = u"""Sample text"""
-    # document object from language v1 library
-    document = language_v1.Document(
     # pass the text 
     # this document constructor has several elements. content, language_code, and type
-    content=text, type_=language_v1.Document.Type.PLAIN_TEXT
-)
-    sentiment = client.analyze_sentiment(
-        request={"document": document}
-    ).document_sentiment
+    # Get the sentiments of the comments
+    
+    value_index = 0
+    sentiments = []
+    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
+        for value in key[value_index]:
+            valueString = str(value)
+            st.write("value is")
+            st.write(valueString)
+            sentiment = get_sentiment(valueString)
+            sentiments.append(sentiment)
+        value_index += 1
 
-    print("Text: {}".format(text))
-    print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+    for sentiment in sentiments:
+        st.write(sentiment)
+        st.write ("^ TEST IN LOOP")
+    #print("Sentiment: {}, {}".format(sentiment[sentiment_index].score, sentiment[sentiment_index].magnitude))
+
     # We can use the client. object methods for more data analysis
 
 # ========================   BELOW IS ALL TEST CODE   ========================
 # I will try to create some modularity.
 def get_sentiment(comment):
-    from google.cloud import language
-    from google.cloud.language import types
+
+    from google.cloud import language_v1
     # Create a language client
-    client = language.LanguageServiceClient()
+    client = language_v1.LanguageServiceClient()
+    
 
     # Create a document object
-    document = types.Document()
-    document.content = comment
-    document.type = types.Document.Type.PLAIN_TEXT
+    document = language_v1.Document(content=comment, type_=language_v1.Document.Type.PLAIN_TEXT)
+    #document.type = language.Document.Type.PLAIN_TEXT
+    
 
     # Analyze the document
-    response = client.analyze_sentiment(document)
+    response = client.analyze_sentiment(request={'document': document})
+    
 
     # Get the sentiment score
     score = response.document_sentiment.score
 
-    return score
+    #comment these out later
+    st.write("score is ")
+    st.write(score)
 
-# Get the sentiments of the comments
-sentiments = []
-comments_text = []
-for comment in comments_text: # assuming comments_text is an array / hashmap
-    sentiment = get_sentiment(comment)
-    sentiments.append(sentiment)
+    return score
