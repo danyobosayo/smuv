@@ -15,5 +15,3 @@ for row in df.itertuples():
 st.text_input('Enter some text')
 
 # I love cheeseburgers
-
-# Ring Ding Dang
