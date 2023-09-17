@@ -27,21 +27,20 @@ def pageTest():
     # constructor
     client = language_v1.LanguageServiceClient()
 
-text = u"""Sample text"""
-# document object from language v1 library
-document = language_v1.Document(
+    text = u"""Sample text"""
+    # document object from language v1 library
+    document = language_v1.Document(
     # pass the text 
     # this document constructor has several elements. content, language_code, and type
     content=text, type_=language_v1.Document.Type.PLAIN_TEXT
 )
-
     sentiment = client.analyze_sentiment(
         request={"document": document}
     ).document_sentiment
 
-print("Text: {}".format(text))
-print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
-# We can use the client. object methods for more data analysis
+    print("Text: {}".format(text))
+    print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+    # We can use the client. object methods for more data analysis
 
-# print data to website
-st.header("Sentiment Value of Recent Videos")
+    # print data to website
+    st.header("Sentiment Value of Recent Videos")
