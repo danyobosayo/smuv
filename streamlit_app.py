@@ -7,13 +7,11 @@ from st_files_connection import FilesConnection
 conn = st.experimental_connection('gcs', type=FilesConnection)
 df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.Owner} loves :{row.Pet}:")
+st.title("Youtube Channel Comment Trends")
 
 # Input field for Youtube URL
-st.text_input('Enter some text')
+url = st.text_input('Enter Youtube Channel URL')
 
-# I love cheeseburgers
+st.write(url)
 
-# Ring Ding Dang
+#
