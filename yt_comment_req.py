@@ -9,6 +9,18 @@ api_service_name = "youtube"
 api_version = "v3"
 DEVELOPER_KEY = "AIzaSyBUf_aEux--I1a-R0Jlf1747KnHQ66x-JI"
 
+def get_uploads_from_channel_code(channel_code):
+    youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+
+    request = youtube.channels().list(
+        part="contentDetails",
+        id=channel_code
+    )
+    response = request.execute()
+    for item in response['items']:
+        return item['contentDetails']['relatedPlaylists']['uploads']
+
 def get_youtube_comments(vidID):
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=DEVELOPER_KEY)
@@ -22,8 +34,14 @@ def get_youtube_comments(vidID):
     )
     response = request.execute()
 
-    for item in response['items']:
-        st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
+    #temporary comment out -> code to print comments retrived
+    #for item in response['items']:
+        #st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
+
+
+    #Get comment thread's ids -> doesn't work right now
+    #for item in response['items']:
+        #st.write(item['snippet']['publishedAt'])
 
 def render_stacked_line_chart():
     options = {

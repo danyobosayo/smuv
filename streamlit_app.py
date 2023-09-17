@@ -14,13 +14,17 @@ def pageTest():
 
     st.title("Youtube Channel Comment Trends")
 
+    st.title('could we get a small explanation with pictures on how to get your own channel code')
+
     # Input field for Youtube URL
-    url = st.text_input('Enter Youtube Channel URL')
-    if url:
-       #Get video ID from url
-       equals_index = url.find("=")
-       vidID = url[equals_index + 1:]
-       yt_comment_req.get_youtube_comments(vidID)
+    channel_code = st.text_input('Enter Youtube Channel Code')
+    if channel_code:
+       #Get uploads playlist's id
+       uploads_id = yt_comment_req.get_uploads_from_channel_code(channel_code)
+       st.write(uploads_id)
+
+       #vidID = 
+       #yt_comment_req.get_youtube_comments(vidID)
 
     yt_comment_req.render_stacked_line_chart()
 
