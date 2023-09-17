@@ -14,7 +14,7 @@ def pageTest():
 
     st.title("Youtube Channel Comment Trends")
 
-    st.title('could we get a small explanation with pictures on how to get your own channel code')
+    st.title("")
 
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
