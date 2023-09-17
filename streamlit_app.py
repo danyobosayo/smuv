@@ -19,13 +19,14 @@ def pageTest():
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
     if channel_code:
-       #Get uploads playlist's id
-       uploads_id = yt_comment_req.get_uploads_from_channel_code(channel_code)
+        # Gets playlist of all videos for a given channel
+        uploads_id = yt_comment_req.get_uploads_from_channel_code(channel_code)
+        # Gets array of first 10 video IDS
+        videoIds = yt_comment_req.get_video_id_from_uploads(uploads_id)
 
-       videoIds = yt_comment_req.get_video_id_from_uploads(uploads_id)
-
-       vidID = videoIds[0]
-       yt_comment_req.get_youtube_comments(vidID)
+        vidID = videoIds[0]
+        st.write(vidID)
+        yt_comment_req.get_youtube_comments(vidID)
 
     yt_comment_req.render_stacked_line_chart()
 
