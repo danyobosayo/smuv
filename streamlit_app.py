@@ -16,10 +16,9 @@ def pageTest():
 
     # Input field for Youtube URL
     url = st.text_input('Enter Youtube Channel URL')
+    if url:
+       yt_comment_req.get_youtube_comments(url)
 
-    st.write(url)
-
-    yt_comment_req.get_youtube_comments()
     yt_comment_req.render_stacked_line_chart()
 
     # Below will have code regarding language processing
@@ -42,3 +41,30 @@ def pageTest():
     print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
     # We can use the client. object methods for more data analysis
 
+# ========================   BELOW IS ALL TEST CODE   ========================
+# I will try to create some modularity.
+def get_sentiment(comment):
+    from google.cloud import language
+    from google.cloud.language import types
+    # Create a language client
+    client = language.LanguageServiceClient()
+
+    # Create a document object
+    document = types.Document()
+    document.content = comment
+    document.type = types.Document.Type.PLAIN_TEXT
+
+    # Analyze the document
+    response = client.analyze_sentiment(document)
+
+    # Get the sentiment score
+    score = response.document_sentiment.score
+
+    return score
+
+# Get the sentiments of the comments
+sentiments = []
+comments_text = []
+for comment in comments_text: # assuming comments_text is an array / hashmap
+    sentiment = get_sentiment(comment)
+    sentiments.append(sentiment)
