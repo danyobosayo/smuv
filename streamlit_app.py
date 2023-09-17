@@ -21,7 +21,6 @@ def pageTest():
     with open("yt_comment-req.py") as f:
         exec(f.read())
 
-    #
     # Below will have code regarding language processing
     from google.cloud import language_v1
     # constructor

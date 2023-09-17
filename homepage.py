@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
 
 #Make sure to: 
-#   - pip install streamlit-option-menu
+#   - pip tall streamlit-option-menu
 #   - pip install streamlit_lottie
 
 def main():
