@@ -33,12 +33,12 @@ def pageTest():
         videoIds = yt_comment_req.get_video_id_from_uploads(uploads_id)
 
         vidID = videoIds[0]
-        st.write(vidID)
+        #st.write(vidID)
         my_dict = yt_comment_req.get_youtube_comments(vidID)
 
     value_ind = 0
     for key in my_dict.keys(): # assuming comments_text is an array / hashmap
-        st.write(key)
+        #st.write(key)
         for value in my_dict.get(key):
             valueString = str(value)
         value_ind += 1
