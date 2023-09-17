@@ -52,12 +52,12 @@ def get_youtube_comments(vidID):
     )
     response = request.execute()
 
-    #temporary comment out -> code to print comments retrived
-    #for item in response['items']:
-        #st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
-
     for item in response['items']:
-        st.write(item['snippet']['topLevelComment']['snippet']['publishedAt'])
+        commentText = item['snippet']['topLevelComment']
+        commentDateString = item['snippet']['topLevelComment']['snippet']['publishedAt'].replace("-","")
+        commentDate = commentDateString[:8]
+        st.write(commentDateString)
+        
 
 def render_stacked_line_chart():
     options = {
