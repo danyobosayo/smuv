@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
 
 #Make sure to: 
-#   - pip tall streamlit-option-menu
+#   - pip install streamlit-option-menu
 #   - pip install streamlit_lottie
 #   - pip install requests
 
@@ -28,6 +28,7 @@ def main():
 
     with st.sidebar:
         selected = option_menu(
+            menu_title="",
             options=["Home", "Analytics", "Contacts"],
             icons=["house", "clipboard2-data-fill", "envelope-at"]
         )
