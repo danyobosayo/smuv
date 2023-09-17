@@ -52,12 +52,34 @@ def get_youtube_comments(vidID):
     )
     response = request.execute()
 
-    #temporary comment out -> code to print comments retrived
-    #for item in response['items']:
-        #st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
+    #Create hashmap that we will return
+    my_dict = {}
+    keys = []
+    values = []
+
+    #Code to print comments retrived
+    for item in response['items']:
+        values.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
+        
 
     for item in response['items']:
         st.write(item['snippet']['topLevelComment']['snippet']['publishedAt'])
+        #jordan's code to format the date will be here
+        
+        #keys.append() whatever jordan spits out
+
+    # Fill out the hash map
+    values_index = 0
+    for key in keys:
+        if key not in my_dict.keys():
+            my_dict[key] = [values[values_index]]
+        else:
+            my_dict[key].append(values[values_index])
+        # increase index counter
+        values_index = values_index + 1
+
+    return my_dict
+
 
 def render_stacked_line_chart():
     options = {
