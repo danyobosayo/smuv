@@ -15,3 +15,23 @@ url = st.text_input('Enter Youtube Channel URL')
 st.write(url)
 
 #
+# Below will have code regarding language processing
+from google.cloud import language_v1
+# constructor
+client = language_v1.LanguageServiceClient()
+
+text = u"""I think that League of Legends and Valorant are the greatest 
+games to be released."""
+# document object from language v1 library
+document = language_v1.Document(
+    # pass the text 
+    content=text, type_=language_v1.Document.Type.PLAIN_TEXT
+)
+
+sentiment = client.analyze_sentiment(
+    request={"document": document}
+).document_sentiment
+
+print("Text: {}".format(text))
+print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+# We can use the client. object methods for more data analysis
