@@ -10,3 +10,6 @@ df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 # Print results.
 for row in df.itertuples():
     st.write(f"{row.Owner} loves :{row.Pet}:")
+
+# Input field for Youtube URL
+st.text_input('Enter some text')
