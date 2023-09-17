@@ -12,6 +12,13 @@ def pageTest():
     conn = st.experimental_connection('gcs', type=FilesConnection)
     df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
+    def local_css(file_name):
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+    local_css("streamlit_app.css")
+
+
     st.title("Youtube Channel Comment Trends")
 
     st.title("")
