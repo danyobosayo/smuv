@@ -31,7 +31,7 @@ def get_video_id_from_uploads(uploads_id):
     request = youtube.playlistItems().list(
         part="contentDetails",
         playlistId=uploads_id,
-        maxResults=10
+        maxResults=50
     )
     response = request.execute()
 
@@ -60,7 +60,6 @@ def get_youtube_comments(vidID):
     my_dict = {}
     keys = []
     values = []
-
     #Code to print comments retrived
     for item in response['items']:
         values.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])

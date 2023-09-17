@@ -9,9 +9,11 @@ from streamlit_echarts import st_echarts
 from streamlit_echarts import JsCode
 import streamlit as st
 
+
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
 def pageTest():
+    my_dict = {}
     conn = st.experimental_connection('gcs', type=FilesConnection)
     df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
@@ -26,8 +28,6 @@ def pageTest():
 
     st.title("")
 
-    my_dict = {}
-
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
     if channel_code:
@@ -40,15 +40,6 @@ def pageTest():
         #st.write(vidID)
         my_dict = yt_comment_req.get_youtube_comments(vidID)
 
-    value_ind = 0
-    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
-        #st.write(key)
-        for value in my_dict.get(key):
-            valueString = str(value)
-        value_ind += 1
-
-    render_stacked_line_chart(my_dict)
-
     # Below will have code regarding language processing
     # constructor
     # pass the text 
@@ -57,12 +48,25 @@ def pageTest():
     #st.write (len(my_dict.keys()))
     value_index = 0
     sentiments = []
-    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
-        for value in my_dict.get(key):
+    
+    arr = list(my_dict.keys())
+    for key in arr: # assuming comments_text is an array / hashmap
+        for value in arr:
             valueString = str(value)
             sentiment = get_sentiment(valueString)
             sentiments.append(sentiment)
         value_index += 1
+        
+        
+    value_ind = 0
+    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
+        #st.write(key)
+        for value in my_dict.get(key):
+            valueString = str(value)
+        value_ind += 1
+    render_stacked_line_chart(arr, sentiments)
+
+
 
    # for sentiment in sentiments:
 
@@ -90,8 +94,7 @@ def get_sentiment(comment):
 
     return score
 
-def render_stacked_line_chart(my_dict):
-    
+def render_stacked_line_chart(arr, sentiArr):
     options = {
         "title": {"text": "Sentiment Value of Recent Videos"},
         "tooltip": {"trigger": "axis"},
@@ -100,23 +103,16 @@ def render_stacked_line_chart(my_dict):
         "xAxis": {
             "type": "category",
             "boundaryGap": False,
-            "data": my_dict.keys(),
+            "data": arr,
         },
         "yAxis": {"type": "value"},
         "series": [
             {
                 "name": "name1",
                 "type": "line",
-#                "stack": "stack1",
-                "data": [4,4.3,4],
-            },
-            {
-                "name": "name2",
-                "type": "line",
-#                "stack": "stack2",
-                "data": [5,3,2],
+                "stack": "stack1",
+                "data": sentiArr,
             },
         ],
     }
-    options = list(my_dict.keys())
     st_echarts(options=options, height="400px")
