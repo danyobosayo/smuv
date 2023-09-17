@@ -17,7 +17,10 @@ def pageTest():
     # Input field for Youtube URL
     url = st.text_input('Enter Youtube Channel URL')
     if url:
-       yt_comment_req.get_youtube_comments(url)
+       #Get video ID from url
+       equals_index = url.find("=")
+       vidID = url[equals_index + 1:]
+       yt_comment_req.get_youtube_comments(vidID)
 
     yt_comment_req.render_stacked_line_chart()
 
