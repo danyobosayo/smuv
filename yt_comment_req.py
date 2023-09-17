@@ -56,10 +56,8 @@ def get_youtube_comments(vidID):
     #for item in response['items']:
         #st.write(item['snippet']['topLevelComment']['snippet']['textDisplay'])
 
-
-    #Get comment thread's ids -> doesn't work right now
-    #for item in response['items']:
-        #st.write(item['snippet']['publishedAt'])
+    for item in response['items']:
+        st.write(item['snippet']['topLevelComment']['snippet']['publishedAt'])
 
 def render_stacked_line_chart():
     options = {
