@@ -9,7 +9,6 @@ from streamlit_echarts import st_echarts
 from streamlit_echarts import JsCode
 import streamlit as st
 
-my_dict = {}
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
 def pageTest():
@@ -26,6 +25,8 @@ def pageTest():
     st.title("Youtube Channel Comment Trends")
 
     st.title("")
+
+    my_dict = {}
 
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
@@ -46,7 +47,7 @@ def pageTest():
             valueString = str(value)
         value_ind += 1
 
-    render_stacked_line_chart()
+    render_stacked_line_chart(my_dict)
 
     # Below will have code regarding language processing
     # constructor
@@ -89,7 +90,8 @@ def get_sentiment(comment):
 
     return score
 
-def render_stacked_line_chart():
+def render_stacked_line_chart(my_dict):
+    
     options = {
         "title": {"text": "Sentiment Value of Recent Videos"},
         "tooltip": {"trigger": "axis"},
