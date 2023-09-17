@@ -41,3 +41,7 @@ header {visibility: hidden;}
   background: linear-gradient(#ffffff 0%, #efefef 80%);
   box-shadow: -200px 0px 200px 150px black;
 }
+
+[class="menu"]{
+  background-color: white;
+}
