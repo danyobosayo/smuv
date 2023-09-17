@@ -60,17 +60,9 @@ def get_youtube_comments(vidID):
     #Code to print comments retrived
     for item in response['items']:
         values.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
-        
-
-    for item in response['items']:
-
-        
-        #jordan's code to format the date will be here
-        commentText = item['snippet']['topLevelComment']
+#        commentText = item['snippet']['topLevelComment']['snippet']['textDisplay']
         commentDateString = item['snippet']['topLevelComment']['snippet']['publishedAt'].replace("-","")
         commentDate = commentDateString[:8]
-        st.write(commentDateString)
-        #keys.append() whatever jordan spits out
 
     # Fill out the hash map 
     values_index = 0
