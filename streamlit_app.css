@@ -1,38 +1,54 @@
 .css-16idsys p {
-    font-size: 20px;
+font-size: 20px;
 }
 
 .st-bv {
-    padding-right: 0px;
-  }
-  .st-bu {
-    padding-left: 0px;
-  }
-  .st-bt {
-    background-color: transparent;
-  }
-  .st-bs {
-    background-color: transparent;
-  }
-  .st-br {
-    background-color: transparent;
-  }
-  .st-bq {
-    background-color: transparent;
-  }
-  .st-bp {
-    background-color: transparent;
-  }
+padding-right: 0px;
+}
+.st-bu {
+padding-left: 0px;
+}
+.st-bt {
+background-color: transparent;
+}
+.st-bs {
+background-color: transparent;
+}
+.st-br {
+background-color: transparent;
+}
+.st-bq {
+background-color: transparent;
+}
+.st-bp {
+background-color: transparent;
+}
 
-  .st-bm {
-    border-bottom-style: none;
-  }
-  .st-bl {
-    border-top-style: none;
-  }
-  .st-bk {
-    border-right-style: none;
-  }
-  .st-bj {
-    border-left-style: none;
-  }
+.st-bm {
+border-bottom-style: none;
+}
+.st-bl {
+border-top-style: none;
+}
+.st-bk {
+border-right-style: none;
+}
+.st-bj {
+border-left-style: none;
+}
+
+.st-cb {
+background-color: transparent;
+}
+.st-ca {
+border-bottom-color: transparent;
+}
+.st-c9 {
+border-top-color: transparent;
+}
+.st-c8 {
+border-right-color: transparent;
+}
+.st-c7 {
+border-left-color: transparent;
+}
