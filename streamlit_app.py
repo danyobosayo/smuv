@@ -41,10 +41,6 @@ def pageTest():
         st.write(key)
         for value in my_dict.get(key):
             valueString = str(value)
-            st.write("value is from my dict")
-            st.write(valueString)
-            st.write("length of values is")
-            st.write(len(value))
         value_ind += 1
 
     yt_comment_req.render_stacked_line_chart()
@@ -54,21 +50,20 @@ def pageTest():
     # pass the text 
     # this document constructor has several elements. content, language_code, and type
     # Get the sentiments of the comments
-    
+    #st.write (len(my_dict.keys()))
     value_index = 0
     sentiments = []
     for key in my_dict.keys(): # assuming comments_text is an array / hashmap
-        for value in key[value_index]:
+        for value in my_dict.get(key):
             valueString = str(value)
-            st.write("value is")
-            st.write(valueString)
             sentiment = get_sentiment(valueString)
             sentiments.append(sentiment)
         value_index += 1
 
     for sentiment in sentiments:
-        st.write(sentiment)
-        st.write ("^ TEST IN LOOP")
+        #here in this loop we will append values to the graph
+
+        
     #print("Sentiment: {}, {}".format(sentiment[sentiment_index].score, sentiment[sentiment_index].magnitude))
 
     # We can use the client. object methods for more data analysis
@@ -95,7 +90,7 @@ def get_sentiment(comment):
     score = response.document_sentiment.score
 
     #comment these out later
-    st.write("score is ")
-    st.write(score)
+    #st.write("score is ")
+    #st.write(score)
 
     return score
