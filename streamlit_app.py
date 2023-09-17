@@ -12,6 +12,8 @@ for row in df.itertuples():
     st.write(f"{row.Owner} loves :{row.Pet}:")
 
 # Input field for Youtube URL
-st.text_input('Enter some text')
+url = st.text_input('Enter Youtube Channel URL')
 
-# I love cheeseburgers
+st.write(url)
+
+#
