@@ -19,8 +19,8 @@ def pageTest():
 
     st.write(url)
 
-yt_comment_req.get_youtube_comments()
-yt_comment_req.render_stacked_line_chart()
+    yt_comment_req.get_youtube_comments()
+    yt_comment_req.render_stacked_line_chart()
 
     # Below will have code regarding language processing
     from google.cloud import language_v1
