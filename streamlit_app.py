@@ -7,11 +7,31 @@ from st_files_connection import FilesConnection
 conn = st.experimental_connection('gcs', type=FilesConnection)
 df = conn.read("smuv-bucket/myfile.csv", input_format="csv", ttl=600)
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.Owner} loves :{row.Pet}:")
+st.title("Youtube Channel Comment Trends")
 
 # Input field for Youtube URL
-st.text_input('Enter some text')
+url = st.text_input('Enter Youtube Channel URL')
 
-# I love cheeseburgers
+st.write(url)
+
+#
+# Below will have code regarding language processing
+from google.cloud import language_v1
+# constructor
+client = language_v1.LanguageServiceClient()
+
+text = u"""I think that League of Legends and Valorant are the greatest 
+games to be released."""
+# document object from language v1 library
+document = language_v1.Document(
+    # pass the text 
+    content=text, type_=language_v1.Document.Type.PLAIN_TEXT
+)
+
+sentiment = client.analyze_sentiment(
+    request={"document": document}
+).document_sentiment
+
+print("Text: {}".format(text))
+print("Sentiment: {}, {}".format(sentiment.score, sentiment.magnitude))
+# We can use the client. object methods for more data analysis
