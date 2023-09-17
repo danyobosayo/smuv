@@ -68,9 +68,9 @@ def get_youtube_comments(vidID):
         
         #keys.append() whatever jordan spits out
 
-    # Fill out the hash map
+    # Fill out the hash map 
     values_index = 0
-    for key in keys:
+    for key in keys: 
         if key not in my_dict.keys():
             my_dict[key] = [values[values_index]]
         else:
