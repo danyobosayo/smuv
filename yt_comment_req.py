@@ -62,7 +62,7 @@ def get_youtube_comments(vidID):
         values.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
 #        commentText = item['snippet']['topLevelComment']['snippet']['textDisplay']
         commentDateString = item['snippet']['topLevelComment']['snippet']['publishedAt'].replace("-","")
-        commentDate = commentDateString[:8]
+        keys.append(commentDateString[:8])
 
     # Fill out the hash map 
     values_index = 0

@@ -16,6 +16,7 @@ def pageTest():
 
     st.title("")
 
+    my_dict = {}
     # Input field for Youtube URL
     channel_code = st.text_input('Enter Youtube Channel Code')
     if channel_code:
@@ -26,7 +27,7 @@ def pageTest():
 
         vidID = videoIds[0]
         st.write(vidID)
-        yt_comment_req.get_youtube_comments(vidID)
+        my_dict = yt_comment_req.get_youtube_comments(vidID)
 
     yt_comment_req.render_stacked_line_chart()
 
