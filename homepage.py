@@ -1,48 +1,66 @@
 import streamlit as st
 import pandas as pd
+from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
+
+#Make sure to: 
+#   - pip install streamlit-option-menu
+#   - pip install streamlit_lottie
+
 
 st.set_page_config(page_title="My Webpage", layout="wide")
 
-st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Main Menu",
+        options=["Home", "Projects", "Contact"],
+    )
 
-st.markdown("""
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+#st.markdown("""<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+#            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+#            crossorigin="anonymous">""", unsafe_allow_html=True)
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-""", unsafe_allow_html=True)
+#with open("homepageStyle.css") as f:
+#    css = f.read()
+#    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+
+#st.markdown("""
+#<nav class="navbar navbar-expand-lg navbar-light bg-light">
+#  <a class="navbar-brand" href="#">Navbar</a>
+#  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+#    <span class="navbar-toggler-icon"></span>
+#  </button>
+#
+#  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+#    <ul class="navbar-nav mr-auto">
+#      <li class="nav-item active">
+#        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+#      </li>
+#      <li class="nav-item">
+#        <a class="nav-link" href="#">Link</a>
+#      </li>
+#     <li class="nav-item dropdown">
+#       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+#          Dropdown
+#        </a>
+#        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+#          <a class="dropdown-item" href="#">Action</a>
+#          <a class="dropdown-item" href="#">Another action</a>
+#          <div class="dropdown-divider"></div>
+#          <a class="dropdown-item" href="#">Something else here</a>
+#        </div>
+#      </li>
+#      <li class="nav-item">
+#        <a class="nav-link disabled" href="#">Disabled</a>
+#      </li>
+#    </ul>
+#    <form class="form-inline my-2 my-lg-0">
+#      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+#      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+#    </form>
+#  </div>
+#</nav>
+#""", unsafe_allow_html=True)
 
 #def load_lottieurl(url):
 #    r = requests.get(url)
