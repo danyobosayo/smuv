@@ -110,10 +110,10 @@ def render_stacked_line_chart(arr, sentiArr):
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "toolbox": {"feature": {"saveAsImage": {}}},
         "xAxis": {
-            "type": "value",
+            "type": "category",
             "boundaryGap": False,
             #"axisLabel": {
-                #"formatter": '{yyyy}{MM}{dd}'
+                #"formatter": '{yyyy}-{MM}-{dd}'
             #},
             "data": arr
         },
