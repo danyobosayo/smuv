@@ -53,26 +53,26 @@ def pageTest():
     # this document constructor has several elements. content, language_code, and type
     # Get the sentiments of the comments
     #st.write (len(my_dict.keys()))
-    value_index = 0
+
     sentiments = []
     
     
     arr = list(my_dict.keys())
     
     for key in arr: # assuming comments_text is an array / hashmap
+        value_sum = 0
+        size_of_value_array = len(my_dict[key])
         for value in my_dict[key]:
             valueString = str(value)
             sentiment = get_sentiment(valueString)
-            sentiments.append(sentiment)
-        value_index += 1
-        
-        
-    value_ind = 0
-    for key in my_dict.keys(): # assuming comments_text is an array / hashmap
-        #st.write(key)
-        for value in my_dict.get(key):
-            valueString = str(value)
-        value_ind += 1
+            value_sum += sentiment
+        #take average
+        average = value_sum / size_of_value_array
+        sentiments.append(average)
+
+    st.write(my_dict.keys())
+    st.write(sentiments)
+
     render_stacked_line_chart(arr, sentiments)
 
 
@@ -110,14 +110,17 @@ def render_stacked_line_chart(arr, sentiArr):
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "toolbox": {"feature": {"saveAsImage": {}}},
         "xAxis": {
-            "type": "category",
+            "type": "value",
             "boundaryGap": False,
-            "data": arr,
+            #"axisLabel": {
+                #"formatter": '{yyyy}{MM}{dd}'
+            #},
+            "data": arr
         },
         "yAxis": {"type": "value"},
         "series": [
             {
-                "name": "name1",
+                "name": "Sentiment Value",
                 "type": "line",
                 "stack": "stack1",
                 "data": sentiArr,
