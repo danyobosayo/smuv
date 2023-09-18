@@ -36,9 +36,17 @@ def pageTest():
         # Gets array of first 10 video IDS
         videoIds = yt_comment_req.get_video_id_from_uploads(uploads_id)
 
-        vidID = videoIds[0]
+        # loop through videoIds
+        for vidID in videoIds:
+            temporary_dict = yt_comment_req.get_youtube_comments(vidID)
+            for key in temporary_dict.keys():
+                if key not in my_dict.keys():
+                    my_dict[key] = temporary_dict[key]
+                else:
+                    for value in temporary_dict[key]:
+                        my_dict[key].append(value)
+
         #st.write(vidID)
-        my_dict = yt_comment_req.get_youtube_comments(vidID)
 
     # Below will have code regarding language processing
     # constructor
@@ -49,11 +57,17 @@ def pageTest():
     value_index = 0
     sentiments = []
     
+    
     arr = list(my_dict.keys())
+    
     for key in arr: # assuming comments_text is an array / hashmap
         for value in arr:
             valueString = str(value)
+            #st.write(key)
+            #st.write(valueString)
             sentiment = get_sentiment(valueString)
+            #st.write(sentiment)
+            #st.write("---")
             sentiments.append(sentiment)
         value_index += 1
         

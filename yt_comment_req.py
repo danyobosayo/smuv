@@ -76,6 +76,7 @@ def get_youtube_comments(vidID):
             my_dict[key].append(values[values_index])
         # increase index counter
         values_index = values_index + 1
+    
     #st.write("Output in yt comment")
     #st.write (len(keys))
 
