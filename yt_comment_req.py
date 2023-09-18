@@ -31,7 +31,7 @@ def get_video_id_from_uploads(uploads_id):
     request = youtube.playlistItems().list(
         part="contentDetails",
         playlistId=uploads_id,
-        maxResults=50
+        maxResults=1
     )
     response = request.execute()
 

@@ -46,7 +46,6 @@ def pageTest():
                     for value in temporary_dict[key]:
                         my_dict[key].append(value)
 
-        #st.write(vidID)
 
     # Below will have code regarding language processing
     # constructor
@@ -61,13 +60,9 @@ def pageTest():
     arr = list(my_dict.keys())
     
     for key in arr: # assuming comments_text is an array / hashmap
-        for value in arr:
+        for value in my_dict[key]:
             valueString = str(value)
-            #st.write(key)
-            #st.write(valueString)
             sentiment = get_sentiment(valueString)
-            #st.write(sentiment)
-            #st.write("---")
             sentiments.append(sentiment)
         value_index += 1
         
