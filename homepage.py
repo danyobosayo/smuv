@@ -42,7 +42,7 @@ def main():
     if selected == "Home":
         with st.container():
 #           st_lottie(youtubeGif, height=100, key="coding")
-            st.title("Youtube Analytics")
+            st.title("YouMood")
 
         with st.container():
             st.write("---")
