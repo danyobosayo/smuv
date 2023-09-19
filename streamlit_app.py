@@ -73,8 +73,19 @@ def pageTest():
     st.write(my_dict.keys())
     st.write(sentiments)
 
-    render_stacked_line_chart(arr, sentiments)
+    graph_data_array = []
+    local_arr_index = 0
+    for key in my_dict.keys():
+        local_arr = [key, sentiments[local_arr_index]]
+        local_arr_index += 1
+        graph_data_array.append(local_arr)
+    
+    st.write(graph_data_array)
+    
+    
 
+    #render_stacked_line_chart(arr, sentiments)
+    render_stacked_line_chart(graph_data_array)
 
 
    # for sentiment in sentiments:
@@ -103,27 +114,26 @@ def get_sentiment(comment):
 
     return score
 
-def render_stacked_line_chart(arr, sentiArr):
+def render_stacked_line_chart(data):
     options = {
         "title": {"text": "Sentiment Value of Recent Videos"},
         "tooltip": {"trigger": "axis"},
         "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": True},
         "toolbox": {"feature": {"saveAsImage": {}}},
         "xAxis": {
-            "type": "category",
+            "type": "time",
             "boundaryGap": False,
             #"axisLabel": {
                 #"formatter": '{yyyy}-{MM}-{dd}'
             #},
-            "data": arr
         },
         "yAxis": {"type": "value"},
         "series": [
             {
                 "name": "Sentiment Value",
-                "type": "line",
+                "type": "bar",
                 "stack": "stack1",
-                "data": sentiArr,
+                "data": data,
             },
         ],
     }
