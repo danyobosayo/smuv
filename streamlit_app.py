@@ -70,8 +70,8 @@ def pageTest():
         average = value_sum / size_of_value_array
         sentiments.append(average)
 
-    st.write(my_dict.keys())
-    st.write(sentiments)
+    #st.write(my_dict.keys())
+    #st.write(sentiments)
 
     graph_data_array = []
     local_arr_index = 0
@@ -80,7 +80,7 @@ def pageTest():
         local_arr_index += 1
         graph_data_array.append(local_arr)
     
-    st.write(graph_data_array)
+    #st.write(graph_data_array)
     
     
 
