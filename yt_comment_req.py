@@ -4,14 +4,15 @@ import json
 from streamlit_echarts import st_echarts
 from streamlit_echarts import JsCode
 import streamlit as st
+import apikey
 
 api_service_name = "youtube"
 api_version = "v3"
-DEVELOPER_KEY = "AIzaSyBUf_aEux--I1a-R0Jlf1747KnHQ66x-JI"
+# DEVELOPER_KEY = apikey.APIKEY
 
 def get_uploads_from_channel_code(channel_code):
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+        api_service_name, api_version, developerKey=apikey.GETAPIKEY())
 
     request = youtube.channels().list(
         part="contentDetails",
@@ -26,7 +27,7 @@ def get_uploads_from_channel_code(channel_code):
 
 def get_video_id_from_uploads(uploads_id):
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+        api_service_name, api_version, developerKey=apikey.GETAPIKEY())
 
     request = youtube.playlistItems().list(
         part="contentDetails",
@@ -44,7 +45,7 @@ def get_video_id_from_uploads(uploads_id):
 
 def get_youtube_comments(vidID):
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, developerKey=DEVELOPER_KEY)
+        api_service_name, api_version, developerKey=apikey.GETAPIKEY())
 
     request = youtube.commentThreads().list(
         part="snippet",
