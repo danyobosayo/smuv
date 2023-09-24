@@ -11,6 +11,9 @@
 *.sln.docstates
 *.secrets.toml
 secrets.toml
+# API key for the YT Data API
+apikey.py
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -398,6 +401,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-# API key for the YT Data API
-apikey.py
